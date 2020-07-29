@@ -1,12 +1,13 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import pydeck as pdk
 
 st.title('Covid-19 Cases')
 
 DATE_COLUMN = 'date/time'
-DATA_URL = ('https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/07-26-2020.csv')
-
+#DATA_URL = ('https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/07-26-2020.csv')
+DATA_URL = ('test.csv')
 #@st.cache
 def load_data(nrows):
     data = pd.read_csv(DATA_URL)
@@ -14,8 +15,8 @@ def load_data(nrows):
     #data.rename(lowercase, axis='columns', inplace=True)
     data.rename({'Long_':'lon'}, axis='columns', inplace=True)
     data.rename({'Lat':'lat'}, axis='columns', inplace=True)
-    data.lon.dtype
-    data.lat.dtype 
+    #data.lon.dtype
+    #data.lat.dtype 
     #data[last_update] = pd.to_datetime(data[DATE_COLUMN])
     return data
 
@@ -33,9 +34,18 @@ if st.checkbox('Show raw data'):
 
 #st.map(data)
 #st.bar_chart(data)
-chart_data = data[['lon', 'lat']]
+chart_data = data[['lon', 'lat','Confirmed']]
 st.write(chart_data)
-chart_data.lon.dtype
-chart_data.lat.dtype 
 #st.bar_chart(chart_data)
-st.map(chart_data)
+st.map(data)
+
+#st.line_chart(data[data.Confirmed, data.Deaths])
+
+data2 = data[['Country_Region','Confirmed', 'Deaths']]
+
+#data2 = pd.DataFrame(
+#    np.random.randn(20, 3),
+#    columns=['a', 'b', 'c'])
+
+st.write(data2)
+st.bar_chart(data2)
