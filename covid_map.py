@@ -6,8 +6,8 @@ import pydeck as pdk
 st.title('Covid-19 Cases')
 
 DATE_COLUMN = 'date/time'
-#DATA_URL = ('https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/07-26-2020.csv')
-DATA_URL = ('test.csv')
+DATA_URL = ('https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/07-26-2020.csv')
+#DATA_URL = ('test.csv')
 #@st.cache
 def load_data(nrows):
     data = pd.read_csv(DATA_URL)
@@ -32,20 +32,25 @@ if st.checkbox('Show raw data'):
     st.subheader('Raw data')
     st.write(data)
 
-#st.map(data)
+#Showing map, and cleaning up all non numeric values.
+st.map(data.dropna(subset=["lon", "lat"]))
+
+
 #st.bar_chart(data)
-chart_data = data[['lon', 'lat','Confirmed']]
-st.write(chart_data)
+#chart_data = data[['lon', 'lat','Confirmed']]
+#st.write(chart_data)
 #st.bar_chart(chart_data)
-st.map(data)
+#st.map(data)
 
 #st.line_chart(data[data.Confirmed, data.Deaths])
 
-data2 = data[['Country_Region','Confirmed', 'Deaths']]
+#data2 = data[['Country_Region','Confirmed', 'Deaths']]
 
 #data2 = pd.DataFrame(
 #    np.random.randn(20, 3),
 #    columns=['a', 'b', 'c'])
 
-st.write(data2)
-st.bar_chart(data2)
+#st.write(data2)
+#st.bar_chart(data2)
+
+
