@@ -27,7 +27,10 @@ for link in soup.find_all('a'):
         print (csv_url)
         #print("https://raw.githubusercontent.com"+link.get('href')) 
         data = pd.read_csv(csv_url) 
-        denmark.append(data)
+        if 'Denmark' in data.values:
+            print (data)
+        
+        #denmark = denmark.append(data)
         #data = data[(data['Country_Region'] == 'Denmark') & (data['Province_State'] != 'Faroe Islands') & (data['Province_State'] != 'Greenland')]
 #denmark = denmark[(data['Country_Region'] == 'Denmark') & (data['Province_State'] != 'Faroe Islands') & (data['Province_State'] != 'Greenland')]
 #print (denmark)
