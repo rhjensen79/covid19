@@ -23,7 +23,7 @@ data = data.drop(columns=['Province/State', 'Last Update', 'Latitude', 'Longitud
 chart = pd.DataFrame()
 
 
-#Copy relavant DF data
+#Copy relavant DF to data
 chart['Confirmed'] = data['Confirmed'].copy()
 chart['Deaths'] = data['Deaths'].copy()
 chart['Recovered'] = data['Recovered'].copy()
@@ -31,5 +31,5 @@ chart['Active'] = data['Active'].copy()
 
 
 #Present
-st.text('COVID-19 data for Denmark')
+st.title('COVID-19 data for Denmark')
 st.line_chart(chart)
