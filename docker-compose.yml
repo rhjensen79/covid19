@@ -3,6 +3,8 @@ version: '3.4'
 services:
   covid19:
     image: covid19
+    ports: 
+      - 8501:8501
     build:
       context: .
       dockerfile: ./Dockerfile
