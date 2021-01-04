@@ -1,10 +1,7 @@
 Date,FIPS,Admin2,Province_State,Country_Region,Last_Update,Lat,Long_,Confirmed,Deaths,Recovered,Active,Combined_Key,Incident_Rate,Case_Fatality_Ratio,Province/State,Last Update,Latitude,Longitude,Incidence_Rate,Case-Fatality_Ratio
 01-01-2021,,,,Denmark,2021-01-02 05:22:33,56.2639,9.5018,165930,1322.0,130818.0,33790.0,Denmark,2864.7131324644524,0.7967215090700898,,,,,,
-<<<<<<< HEAD
 01-02-2021,,,,Denmark,2021-01-03 05:22:52,56.2639,9.5018,167541,1345.0,133889.0,32307.0,Denmark,2892.5263841754163,0.8027885711557171,,,,,,
 01-03-2021,,,,Denmark,2021-01-04 05:22:02,56.2639,9.5018,168711,1374.0,136598.0,30739.0,Denmark,2912.7259524571227,0.8144104415242633,,,,,,
-=======
->>>>>>> b2ff69cbddc0808b29d6f35efa81d7f890c2b81e
 02-27-2020,,,,Denmark,,,,1,0.0,0.0,,,,,,2020-02-27T16:23:03,,,,
 02-28-2020,,,,Denmark,,,,1,0.0,0.0,,,,,,2020-02-27T16:23:03,,,,
 02-29-2020,,,,Denmark,,,,3,0.0,0.0,,,,,,2020-02-29T18:03:05,,,,
