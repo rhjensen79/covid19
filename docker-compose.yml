@@ -1,0 +1,25 @@
+version: '3.4'
+
+services:
+  covid19:
+    image: covid19
+    ports: 
+      - 8501:8501
+    networks:
+      - web
+    container_name: covid19
+    restart: always
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.covid19.rule=Host(`covid19.robert-jensen.dk`)"
+      - "traefik.http.routers.covid19.entrypoints=websecure"
+      - "traefik.http.routers.covid19.tls=true"
+      - "traefik.http.routers.covid19.tls.certresolver=myresolver"
+      - "traefik.http.middlewares.covid19.redirectscheme.scheme=https"
+
+networks:
+  web:
+    external: true
