@@ -5,13 +5,18 @@ services:
     image: covid19
     ports: 
       - 8501:8501
+    networks:
+      - web
     build:
       context: .
       dockerfile: ./Dockerfile
     labels:
-    - "traefik.enable=true"
-    - "traefik.http.routers.whoami.rule=Host(`covid19.robert-jensen.dk`)"
-    - "traefik.http.routers.whoami.entrypoints=websecure"
-    - "traefik.http.routers.whoami.tls=true"
-    - "traefik.http.routers.whoami.tls.certresolver=myresolver"
-    - "traefik.http.middlewares.whoami.redirectscheme.scheme=https"
+      - "traefik.enable=true"
+      - "traefik.http.routers.covid19.rule=Host(`covid19.robert-jensen.dk`)"
+      - "traefik.http.routers.covid19.entrypoints=websecure"
+      - "traefik.http.routers.covid19.tls=true"
+      - "traefik.http.routers.covid19.tls.certresolver=myresolver"
+
+networks:
+  web:
+    external: true
