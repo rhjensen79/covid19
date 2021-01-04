@@ -28,8 +28,45 @@ chart['Confirmed'] = data['Confirmed'].copy()
 chart['Deaths'] = data['Deaths'].copy()
 chart['Recovered'] = data['Recovered'].copy()
 chart['Active'] = data['Active'].copy()
+print (chart)
 
+#Convert and sort by date
+chart['Date'] = pd.to_datetime(data['Date'], format='%m-%d-%Y')
+chart = chart.sort_values(by='Date')
+
+
+#Streamlit config
+st.set_page_config(
+    page_title="CMP Value",
+    layout="wide",
+    initial_sidebar_state="collapsed",
+)
 
 #Present
 st.title('COVID-19 data for Denmark')
-st.line_chart(chart)
+
+st.write ('Data gathered from Johns Hopkins University github repo')
+st.write ('filtered to only show Denmarks data')
+st.write ('url : https://github.com/CSSEGISandData/COVID-19')
+st.write ('')
+
+
+#Split into colums
+col1, col2 = st.beta_columns(2)
+
+with col1:
+    st.write('Confirmed - Last number : ',chart['Confirmed'].iloc[-1])
+    chart = chart.set_index('Date')
+    st.line_chart(chart['Confirmed'])
+
+with col2:
+    st.write('Deaths - Last number : ',chart['Deaths'].iloc[-1])
+    st.line_chart(chart['Deaths'])
+
+with col1:
+    st.write('Recovered - Last number : ',chart['Recovered'].iloc[-1])
+    st.line_chart(chart['Recovered'])
+
+with col2:
+    st.write('Active - Last number : ',chart['Active'].iloc[-1])
+    st.line_chart(chart['Active'])
