@@ -16,6 +16,7 @@ services:
       - "traefik.http.routers.covid19.entrypoints=websecure"
       - "traefik.http.routers.covid19.tls=true"
       - "traefik.http.routers.covid19.tls.certresolver=myresolver"
+      - "traefik.http.middlewares.covid19.redirectscheme.scheme=https"
 
 networks:
   web:
