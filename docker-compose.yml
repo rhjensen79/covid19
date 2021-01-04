@@ -8,3 +8,10 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
+    labels:
+    - "traefik.enable=true"
+    - "traefik.http.routers.whoami.rule=Host(`covid19.robert-jensen.dk`)"
+    - "traefik.http.routers.whoami.entrypoints=websecure"
+    - "traefik.http.routers.whoami.tls=true"
+    - "traefik.http.routers.whoami.tls.certresolver=myresolver"
+    - "traefik.http.middlewares.whoami.redirectscheme.scheme=https"
