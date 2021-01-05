@@ -66,3 +66,5 @@ with col1:
 with col2:
     st.write('Active - Last number : ',chart['Active'].iloc[-1])
     st.line_chart(chart['Active'])
+
+st.write ('All info around this page, can be found here : https://github.com/rhjensen79/covid19')
