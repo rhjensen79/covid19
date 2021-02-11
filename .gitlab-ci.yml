@@ -1,0 +1,15 @@
+master-deploy:
+  image: ubuntu:latest
+  tags:
+    - robert-jensen
+  stage: deploy
+  before_script:
+    - echo "Set docker host"
+    - export DOCKER_HOST=tcp://192.168.50.5:2376
+  script:
+    - echo "Install docker compose"
+    - apt-get update && apt-get install -y docker-compose
+    - echo "Start Container"
+    - docker-compose -f docker-compose.yml up -d --build --force-recreate
+  only:
+    - master
